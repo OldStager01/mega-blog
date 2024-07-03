@@ -5,12 +5,14 @@ import { Query } from "appwrite";
 import { useSelector } from "react-redux";
 function MyPosts() {
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
   const userData = useSelector((state) => state.auth.userData);
   useEffect(() => {
     appwriteService
       .getPosts([Query.equal("userId", userData.$id)])
       .then((posts) => {
         if (posts) setPosts(posts.documents);
+        setLoading(false);
       });
   }, []);
   console.log(posts);
@@ -19,7 +21,9 @@ function MyPosts() {
     return (
       <div className="w-full py-8 mt-4 text-center">
         <Container>
-          <h1 className="text-2xl font-bold hover:text-gray-500">Loading...</h1>
+          <h1 className="text-2xl font-bold hover:text-gray-500">
+            {loading ? "Loading..." : "No Posts Found :("}
+          </h1>
         </Container>
       </div>
     );

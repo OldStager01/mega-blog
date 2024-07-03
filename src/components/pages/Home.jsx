@@ -3,10 +3,11 @@ import appwriteService from "../../appwite/config";
 import { Container, PostCard } from "../../components";
 function Home() {
   const [posts, setPosts] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     appwriteService.getPosts().then((posts) => {
       if (posts) setPosts(posts.documents);
+      setLoading(false);
     });
   }, []);
 
@@ -14,7 +15,9 @@ function Home() {
     return (
       <div className="w-full py-8 mt-4 text-center">
         <Container>
-          <h1 className="text-2xl font-bold hover:text-gray-500">Loading...</h1>
+          <h1 className="text-2xl font-bold hover:text-gray-500">
+            {loading ? "Loading..." : "No Posts Found :("}
+          </h1>
         </Container>
       </div>
     );
