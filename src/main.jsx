@@ -14,6 +14,7 @@ import {
   Home,
   Login,
   Signup,
+  MyPosts,
 } from "./components/pages";
 
 const router = createBrowserRouter([
@@ -56,6 +57,15 @@ const router = createBrowserRouter([
           <AuthLayout authentication>
             {" "}
             <AddPost />
+          </AuthLayout>
+        ),
+      },
+      {
+        path: "/my-posts",
+        element: (
+          <AuthLayout authentication>
+            {" "}
+            <MyPosts />
           </AuthLayout>
         ),
       },

@@ -13,7 +13,7 @@ function PostForm({ post }) {
   const submit = async (data) => {
     if (post) {
       const file = data.image[0]
-        ? await appwriteService.uploadFile(data.file[0])
+        ? await appwriteService.uploadFile(data.image[0])
         : null;
       if (file) {
         appwriteService.deleteFile(post.featuredImage);
@@ -116,6 +116,7 @@ function PostForm({ post }) {
 
         <Select
           options={["active", "inactive"]}
+          defaultOption={post?.status}
           label="Status"
           className="mb-4"
           {...register("status", { required: true })}

@@ -48,6 +48,11 @@ function Header() {
       path: "/add-post",
       active: isAuthenticated,
     },
+    {
+      name: "My Posts",
+      path: "/my-posts",
+      active: isAuthenticated,
+    },
   ];
   return (
     <header className="py-4 my-auto mt-0 shadow bg-[#1A2130]">
