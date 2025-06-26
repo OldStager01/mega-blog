@@ -125,7 +125,7 @@ class Service{
 
     getFilePreview(fileID){
         try {
-            return this.bucket.getFilePreview(
+            return this.bucket.getFileView(
             config.appWriteBucketID,
             fileID
         )
